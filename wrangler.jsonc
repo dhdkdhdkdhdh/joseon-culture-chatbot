@@ -1,5 +1,6 @@
 {
   "name": "joseon-culture-chatbot",
+  "main": "functions/api/chat.js",
   "compatibility_date": "2026-10-22",
   "assets": {
     "directory": ".",
