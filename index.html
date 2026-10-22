@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e3f4ff">
+<title>조선 후기 서민 문화 탐험 챗봇</title>
+<style>
+:root{--bg:#eaf7ff;--blue:#4ba6d1;--blue2:#287fa8;--ink:#294452;--muted:#66818e;--line:#d7eaf4;--card:#fff;--mint:#e9f8f0;--yellow:#fff5d7;--pink:#fff0f4}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(145deg,#e9f7ff,#f6fbff);font-family:"Malgun Gothic","Noto Sans KR",system-ui,sans-serif;color:var(--ink)}
+button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #f4c84b;outline-offset:2px}
+.wrap{max-width:1100px;margin:auto;padding:22px}.header{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.brand{font-weight:900;color:var(--blue2);display:flex;align-items:center;gap:10px}.logo{background:#fff;border-radius:14px;padding:9px;font-size:24px;box-shadow:0 5px 18px #8cc8e533}.tag{background:#ffffffc9;border:1px solid white;border-radius:99px;padding:8px 12px;color:#4e829a;font-size:13px;font-weight:700}
+.hero{background:#fff;border:1px solid white;border-radius:26px;padding:clamp(22px,4vw,38px);box-shadow:0 12px 32px #4b99bd16;margin-bottom:18px}.hero h1{font-size:clamp(25px,4vw,38px);letter-spacing:-1.2px;margin:0 0 10px}.hero p{line-height:1.7;color:var(--muted);margin:0;max-width:750px}
+.videos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:22px}.video{border:1px solid var(--line);border-radius:17px;padding:16px;background:#f8fcff}.video h3{font-size:16px;margin:0 0 7px}.video p{font-size:13px;line-height:1.6;margin:0 0 12px}.linkbtn{display:inline-block;text-decoration:none;color:var(--blue2);background:#e8f6ff;border-radius:11px;padding:10px 12px;font-size:13px;font-weight:800}
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}.chat,.side{background:#fff;border:1px solid white;border-radius:24px;box-shadow:0 12px 32px #4b99bd16;overflow:hidden}.chathead{padding:19px 22px;background:#f4fbff;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:12px}.bot{width:43px;height:43px;border-radius:15px;background:#dff3ff;display:grid;place-items:center;font-size:24px}.chathead strong{display:block}.chathead small{color:var(--muted);display:block;margin-top:4px}.messages{height:410px;overflow:auto;padding:20px;display:flex;flex-direction:column;gap:13px;background:#fcfeff}.msg{max-width:91%;padding:13px 15px;border-radius:17px;line-height:1.65;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}.botmsg{background:#edf8ff;border:1px solid #dceff8;align-self:flex-start;border-top-left-radius:5px}.usermsg{background:#dff4ff;align-self:flex-end;border-top-right-radius:5px}.quick{display:flex;gap:8px;flex-wrap:wrap;padding:0 18px 15px}.quick button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 11px;color:#367e9f;font-size:12px;font-weight:800}.inputrow{display:flex;gap:9px;padding:15px 17px;border-top:1px solid var(--line);background:#fff}.inputrow input{min-width:0;flex:1;border:1px solid #cfe4ef;border-radius:14px;padding:13px 14px;color:var(--ink)}.send{border:0;background:var(--blue);color:#fff;border-radius:14px;padding:0 18px;font-weight:900}.notice{font-size:11px;color:#7b939f;line-height:1.5;padding:0 18px 15px}
+.side{padding:19px}.side h2{font-size:18px;margin:0 0 13px}.topiclist{display:grid;gap:9px}.topic{border:1px solid var(--line);background:#fbfdff;border-radius:14px;padding:12px;text-align:left;color:var(--ink)}.topic strong{display:block;margin-bottom:4px}.topic span{font-size:12px;color:var(--muted);line-height:1.5;display:block}.report{margin-top:18px;background:#fff8df;border:1px solid #f7e7b2;border-radius:17px;padding:15px}.report h3{margin:0 0 8px;font-size:15px}.report ol{padding-left:19px;margin:0;font-size:13px;line-height:1.8}.source{font-size:12px;line-height:1.7;color:var(--muted);margin-top:16px}.source a{color:#287fa8}
+footer{text-align:center;color:#7d9aaa;font-size:12px;padding:20px}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.side{order:2}.messages{height:380px}.videos{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.wrap{padding:12px}.header{align-items:flex-start}.tag{font-size:11px}.videos{grid-template-columns:1fr}.hero,.chat,.side{border-radius:20px}.messages{height:380px}.inputrow{padding:11px}.send{padding:0 13px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="header"><div class="brand"><span class="logo">🎭</span><span>조선 후기 서민 문화 탐험</span></div><span class="tag">초등학교 5학년 역사 탐구</span></header>
+<section class="hero">
+<h1>영상 속 문화유산을 탐험하고<br>궁금한 점을 챗봇에게 물어봐요!</h1>
+<p>탈놀이·한글 소설·판소리·민화·풍속화를 살펴보며 조사 보고서를 써 봅시다. 아래 영상부터 보고, 궁금한 점은 챗봇에게 질문해 보세요.</p>
+<div class="videos">
+<div class="video"><h3>🎭 1. 탈춤과 가면놀이</h3><p>탈의 생김새와 색, 탈춤이 당시 사람들에게 어떤 의미였는지 살펴봐요.</p><a class="linkbtn" href="https://uci.k-heritage.tv/resolver/I801:1506005-015-V00001" target="_blank" rel="noopener">영상 보기 ↗</a></div>
+<div class="video"><h3>📚 2. 한글 소설과 판소리</h3><p>홍길동전 등 한글 소설과 소리꾼의 노래인 판소리를 알아봐요.</p><a class="linkbtn" href="https://uci.k-heritage.tv/resolver/I801:1809003-001-V00009" target="_blank" rel="noopener">영상 보기 ↗</a></div>
+<div class="video"><h3>🐯 3. 민화</h3><p>민화의 소재와 색깔, 그림에 담긴 소망을 찾아봐요.</p><a class="linkbtn" href="https://uci.k-heritage.tv/resolver/I801:1709003-003-V00002" target="_blank" rel="noopener">영상 보기 ↗</a></div>
+<div class="video"><h3>🖼️ 4. 풍속화</h3><p>김홍도와 신윤복의 그림을 비교하며 옛사람들의 생활을 살펴봐요.</p><a class="linkbtn" href="https://uci.k-heritage.tv/resolver/I801:1709003-001-V00002" target="_blank" rel="noopener">영상 보기 ↗</a></div>
+</div>
+</section>
+<div class="layout">
+<section class="chat">
+<div class="chathead"><div class="bot">🤖</div><div><strong>서민 문화 탐험 도우미</strong><small>질문하고, 더 알아보고, 보고서에 기록해요.</small></div></div>
+<div id="messages" class="messages" aria-live="polite">
+<div class="msg botmsg">안녕! 나는 조선 후기 서민 문화 탐험 도우미야. 😊\n\n영상에서 본 내용이 궁금하면 물어봐!\n예를 들어 “탈춤은 왜 했나요?”, “민화에는 어떤 뜻이 담겼나요?”처럼 질문할 수 있어.\n\n먼저 아래 질문 버튼을 눌러 시작해도 좋아.</div>
+</div>
+<div class="quick" id="quick">
+<button data-q="탈춤은 왜 했나요?">탈춤은 왜 했나요?</button>
+<button data-q="한글 소설은 왜 인기가 많아졌나요?">한글 소설</button>
+<button data-q="판소리는 어떻게 공연했나요?">판소리</button>
+<button data-q="민화에는 어떤 뜻이 담겼나요?">민화</button>
+<button data-q="김홍도와 신윤복의 풍속화는 어떻게 다른가요?">풍속화 비교</button>
+</div>
+<form class="inputrow" id="askform"><input id="question" maxlength="300" placeholder="궁금한 점을 적어 보세요." aria-label="질문 입력" autocomplete="off"><button class="send" type="submit">질문하기</button></form>
+<div class="notice">AI가 질문에 맞춰 답하는 학습용 챗봇이에요. AI가 영상 파일을 직접 시청하거나 자동으로 대본을 읽는 것은 아니므로, 영상에서 확인한 사실과 비교해 보고 개인정보는 입력하지 마세요.</div>
+</section>
+<aside class="side">
+<h2>🧭 탐구 주제 고르기</h2>
+<div class="topiclist">
+<button class="topic" data-q="탈놀이"><strong>🎭 탈놀이</strong><span>탈의 생김새, 등장인물, 양반을 풍자한 까닭</span></button>
+<button class="topic" data-q="한글 소설"><strong>📚 한글 소설</strong><span>홍길동전, 서민의 바람, 소설의 인기</span></button>
+<button class="topic" data-q="판소리"><strong>🥁 판소리</strong><span>소리꾼, 북장단, 판소리 다섯 마당</span></button>
+<button class="topic" data-q="민화"><strong>🐯 민화</strong><span>호작도, 책가도, 그림에 담긴 소망</span></button>
+<button class="topic" data-q="풍속화"><strong>🖼️ 풍속화</strong><span>김홍도, 신윤복, 옛사람들의 생활</span></button>
+</div>
+<div class="report"><h3>✏️ 보고서에 기록할 것</h3><ol><li>문화의 이름과 뜻</li><li>영상에서 새롭게 알게 된 사실</li><li>당시 사람들의 생활이나 생각</li><li>내가 더 궁금해진 질문</li><li>내 생각과 느낀 점</li></ol></div>
+<div class="source">자료 출처: 국가유산진흥원 국가유산 콘텐츠 검색 서비스<br>
+<a href="https://uci.k-heritage.tv/resolver/I801:1506005-015-V00001" target="_blank" rel="noopener">탈춤</a> ·
+<a href="https://uci.k-heritage.tv/resolver/I801:1809003-001-V00009" target="_blank" rel="noopener">한글 소설·판소리</a> ·
+<a href="https://uci.k-heritage.tv/resolver/I801:1709003-003-V00002" target="_blank" rel="noopener">민화</a> ·
+<a href="https://uci.k-heritage.tv/resolver/I801:1709003-001-V00002" target="_blank" rel="noopener">풍속화</a>
+</div>
+</aside>
+</div>
+<footer>천천히 살펴보고, 근거를 찾아 나만의 생각으로 정리해 봐요 💙</footer>
+</div>
+<script>
+"use strict";
+const messages = document.getElementById("messages");
+const input = document.getElementById("question");
+const form = document.getElementById("askform");
+const history = [];
+
+function addMessage(text, who){
+  const div = document.createElement("div");
+  div.className = "msg " + (who === "user" ? "usermsg" : "botmsg");
+  div.textContent = text;
+  messages.appendChild(div);
+  messages.scrollTop = messages.scrollHeight;
+  return div;
+}
+
+async function respond(q){
+  const text = q.trim();
+  if(!text) return;
+  addMessage(text, "user");
+  history.push({role:"user", content:text});
+  input.value = "";
+  input.disabled = true;
+  form.querySelector("button").disabled = true;
+  form.querySelector("button").textContent = "답변 중…";
+  const pending = addMessage("잠깐만! 질문을 살펴보고 있어. 😊", "bot");
+
+  try {
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({messages: history.slice(-8)})
+    });
+    const data = await response.json();
+    if(!response.ok) throw new Error(data.error || "AI 연결에 실패했어.");
+    const answer = data.answer || "답변을 가져오지 못했어. 질문을 조금 바꿔서 다시 물어봐!";
+    pending.textContent = answer;
+    history.push({role:"assistant", content:answer});
+    // Keep the context small for classroom use.
+    while(history.length > 8) history.shift();
+  } catch (err) {
+    pending.textContent = "아직 AI 서버와 연결되지 않았거나 잠시 문제가 생겼어.\n\n선생님에게 연결 설정을 확인해 달라고 해 줘. (오류: " + (err.message || "알 수 없는 오류") + ")";
+  } finally {
+    input.disabled = false;
+    form.querySelector("button").disabled = false;
+    form.querySelector("button").textContent = "질문하기";
+    input.focus();
+  }
+}
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  respond(input.value);
+});
+document.querySelectorAll("[data-q]").forEach(btn => {
+  btn.addEventListener("click", () => respond(btn.dataset.q));
+});
+</script>
+</body>
+</html>
