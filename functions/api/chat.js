@@ -75,7 +75,7 @@ export default {
         }
 
         const result = await env.AI.run(
-          "@cf/meta/llama-3.1-8b-instruct-fast",
+          "@cf/qwen/qwen3-30b-a3b-fp8",
           {
             messages: [
               {
